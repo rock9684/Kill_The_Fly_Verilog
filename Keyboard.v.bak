@@ -1,0 +1,47 @@
+`include "PS2_Controller.v"
+//This is a module to get inputs from keyboard
+
+module Keyboard(CLOCK_50, KEY, LEDR, PS2_CLK, PS2_DAT);
+	input CLOCK_50;
+	input [3:0]KEY;
+	output reg[9:0]LEDR;
+	wire [7:0]info;
+	wire enable;
+	inout PS2_CLK;
+	inout PS2_DAT;
+	PS2_Controller PS2( //Keyboard controller
+		.CLOCK_50(CLOCK_50), 
+		.reset(~KEY[0]),
+		.PS2_CLK(PS2_CLK),
+		.PS2_DAT(PS2_DAT),
+		.received_data(info[7:0]),
+		.received_data_en(enable)
+	);
+	
+	reg [1:0]counter;
+	always@ (posedge enable)begin
+		if(info == 8'hF0)
+			counter <= 2'b00;
+		else
+			counter <= counter + 1'b1;
+	end
+	
+	always@ (posedge CLOCK_50)begin
+		if(counter == 2'b10)begin
+			if(info == 8'h1C)
+				LEDR[0] = 1;
+			if(info == 8'h1B)
+				LEDR[1] = 1;
+			if(info == 8'h23)
+				LEDR[2] = 1;
+			if(info == 8'h2B)
+				LEDR[3] = 1;
+			if(info == 8'h29)
+				LEDR[5] = 1;
+		end
+		if(info == 8'hF0)
+			LEDR[9:0] = 0;
+	end
+	
+	
+endmodule

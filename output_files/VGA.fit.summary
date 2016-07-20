@@ -1,0 +1,20 @@
+Fitter Status : Successful - Wed Dec 02 00:35:14 2015
+Quartus II 64-Bit Version : 15.0.0 Build 145 04/22/2015 SJ Full Version
+Revision Name : VGA
+Top-level Entity Name : VGA
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 516 / 32,070 ( 2 % )
+Total registers : 353
+Total pins : 104 / 457 ( 23 % )
+Total virtual pins : 0
+Total block memory bits : 281,856 / 4,065,280 ( 7 % )
+Total RAM Blocks : 37 / 397 ( 9 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 6 ( 17 % )
+Total DLLs : 0 / 4 ( 0 % )

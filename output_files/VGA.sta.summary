@@ -1,0 +1,741 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -8.321
+TNS   : -206.706
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -8.257
+TNS   : -207.418
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : -6.428
+TNS   : -117.768
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : -6.399
+TNS   : -102.807
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : -6.318
+TNS   : -87.192
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : -6.194
+TNS   : -6.194
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : -6.109
+TNS   : -44.402
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -5.741
+TNS   : -101.053
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : -5.722
+TNS   : -5.722
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : -5.423
+TNS   : -44.964
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : -5.060
+TNS   : -41.655
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -5.041
+TNS   : -3521.712
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : -4.924
+TNS   : -4.924
+
+Type  : Slow 1100mV 85C Model Setup 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -4.739
+TNS   : -9.250
+
+Type  : Slow 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 32.529
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -0.594
+TNS   : -1.463
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.341
+TNS   : -0.562
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : -0.269
+TNS   : -3.880
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.247
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.326
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.359
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : 0.583
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.704
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.728
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.789
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.868
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 2.948
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 3.177
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 3.881
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 3.928
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -2.296
+TNS   : -37.142
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -0.394
+TNS   : -1.126
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -0.107
+TNS   : -0.368
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.039
+TNS   : -0.039
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.046
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.156
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 0.161
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.195
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.240
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 0.247
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 0.351
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 8.872
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 18.772
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -8.260
+TNS   : -208.382
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -8.162
+TNS   : -208.051
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : -6.655
+TNS   : -120.753
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : -6.472
+TNS   : -103.266
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : -6.396
+TNS   : -88.790
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : -6.296
+TNS   : -6.296
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : -6.212
+TNS   : -45.080
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -5.979
+TNS   : -104.492
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : -5.713
+TNS   : -5.713
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : -5.660
+TNS   : -45.802
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : -5.117
+TNS   : -41.804
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : -4.946
+TNS   : -4.946
+
+Type  : Slow 1100mV 0C Model Setup 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -4.911
+TNS   : -9.608
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -4.775
+TNS   : -3154.338
+
+Type  : Slow 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 32.916
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -0.785
+TNS   : -2.172
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : -0.606
+TNS   : -38.730
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.359
+TNS   : -0.555
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.134
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.248
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.334
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.550
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : 0.642
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.682
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.797
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.882
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 2.951
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 3.221
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 3.867
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 3.958
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -2.235
+TNS   : -36.549
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -0.394
+TNS   : -1.109
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -0.094
+TNS   : -0.246
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.025
+TNS   : -0.025
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.063
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.233
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 0.233
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.247
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 0.318
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.323
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 0.338
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 8.825
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 18.751
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -5.038
+TNS   : -110.469
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -4.982
+TNS   : -111.075
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : -3.503
+TNS   : -45.470
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : -3.371
+TNS   : -61.037
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -3.342
+TNS   : -2465.911
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : -3.261
+TNS   : -3.261
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : -3.256
+TNS   : -52.420
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : -3.027
+TNS   : -3.027
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : -3.001
+TNS   : -21.443
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -2.879
+TNS   : -49.119
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : -2.539
+TNS   : -21.567
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : -2.506
+TNS   : -19.908
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : -2.451
+TNS   : -2.451
+
+Type  : Fast 1100mV 85C Model Setup 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -2.390
+TNS   : -4.590
+
+Type  : Fast 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 34.780
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -0.185
+TNS   : -0.438
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.117
+TNS   : -0.239
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
+Slack : -0.071
+TNS   : -0.071
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.105
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.210
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.231
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : 0.231
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.424
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.463
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.516
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.526
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 1.529
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 1.812
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 2.301
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 2.316
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -1.279
+TNS   : -16.275
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -0.058
+TNS   : -0.138
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : 0.024
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.054
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.088
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.209
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.214
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.255
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 0.290
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 0.374
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 0.379
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 8.787
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 18.885
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -4.604
+TNS   : -103.895
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -4.549
+TNS   : -103.911
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : -3.382
+TNS   : -43.816
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : -3.326
+TNS   : -58.841
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : -3.126
+TNS   : -48.828
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : -3.097
+TNS   : -3.097
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : -2.857
+TNS   : -48.224
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : -2.855
+TNS   : -2.855
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : -2.791
+TNS   : -20.109
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -2.790
+TNS   : -1895.759
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : -2.408
+TNS   : -20.260
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : -2.363
+TNS   : -2.363
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : -2.330
+TNS   : -18.619
+
+Type  : Fast 1100mV 0C Model Setup 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : -2.306
+TNS   : -4.458
+
+Type  : Fast 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 35.476
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
+Slack : -0.343
+TNS   : -12.922
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -0.239
+TNS   : -0.610
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : -0.096
+TNS   : -0.159
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.112
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.192
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.222
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : 0.342
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.356
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.394
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.521
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.571
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 1.494
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 1.817
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 2.247
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 2.255
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[1]'
+Slack : -1.079
+TNS   : -13.849
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|b'
+Slack : 0.044
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|Keyboard:myKeyboard|PS2_Controller:PS2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en'
+Slack : 0.075
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|controlPath:myControl|presentstate[0]'
+Slack : 0.118
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|b'
+Slack : 0.164
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|gameOverDisplay:myGanmeOverDisplay|controlOver:gameOverControl|currentstate[1]'
+Slack : 0.244
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|controlFlyIn:flyInControl|currentstate[0]'
+Slack : 0.255
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|b'
+Slack : 0.275
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownControl:flyDownDControl|currentstate[0]'
+Slack : 0.296
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_down:myDown|flyDownData:flyDownDData|d'
+Slack : 0.318
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpControl:flyUpControl|currentstate[0]'
+Slack : 0.355
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|fly_animation_up:myUp|flyUpData:flyUpData|d'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Milestone1:comb_4|datapath:mydatapath|animationModule:myAnimation|flyIn:myIn|dataFlyIn:flyInData|f'
+Slack : 0.392
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 8.781
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 18.884
+TNS   : 0.000
+
+------------------------------------------------------------

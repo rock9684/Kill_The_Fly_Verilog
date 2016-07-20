@@ -1,0 +1,172 @@
+
+
+/*
+* The state for game over display
+* gameStart: when it is one, erase the part
+* gameOver: when it is one, draw the game over picture
+*/
+
+module gameOverDisplay(gameStart, gameOver, reset, clock, x, y, colour, plot);
+	input gameStart;
+	input gameOver;
+	input clock;
+	
+	//Wires needed for signals between control path and data path
+	wire [12:0]drawCount;
+	wire [12:0]eraseCount;
+	wire [2:0]currentstate;
+	controlOver gameOverControl(gameStart, gameOver, reset, clock, currentstate);
+	
+	output [8:0]x;
+	output [7:0]y;
+	output [2:0]colour;
+	output plot;
+	dataOver gameOverData(currentstate, x, y, colour, plot, drawCount, eraseCount);
+
+endmodule
+
+/*****Game Over Image Control*****/
+module controlOver(gameStart, gameOver, reset, drawCount, eraseCount, clock, currentstate);
+	input gameStart;
+	input gameOver;
+	input reset;
+	input [12:0]drawCount;
+	input [12:0]eraseCount;
+	input clock;
+
+parameter [2:0] erase = 3'b000, draw = 3'b001, done = 3'b010;
+	
+	reg [2:0]nextstate;
+	always @ (*)
+	begin
+		case(currentstate)
+			erase:
+			begin
+				if (eraseCount == 13'b1111111111111)
+					nextstate = done;
+			end
+			draw:
+			begin
+				if (drawCount == 13'b1111111111111)
+					nextstate = done;
+			end
+			done:
+				nextstate = done;
+		endcase
+	end
+	
+	output reg [2:0]currentstate;
+	//State Flip-flop
+	always @ (posedge clock)
+	begin
+		if (reset == 1)
+			currentstate <= done;
+		else if (gameStart == 1)
+			currentstate <= erase;
+		else if (gameOver == 1)
+			currentstate <= draw;
+		else
+			currentstate <= nextstate;
+	end
+endmodule
+
+/*****Game Over Image Data*****/
+module dataOver(currentstate, x, y, colour, plot, drawCount, eraseCount);
+	input [2:0]currentstate;
+	output reg [8:0]x;
+	output reg [7:0]y;
+	output reg [2:0]colour;
+	output reg plot;
+	output [12:0]drawCount;
+	output [12:0]eraseCount;
+	
+parameter [2:0] erase = 3'b000, draw = 3'b001, done = 3'b010;
+	
+	reg drawStart;
+	reg eraseStart;
+	//Output logic
+	always @ (*)
+	begin
+		case(currentstate)
+			erase:
+			begin
+				drawStart = 0;
+				eraseStart = 1;
+			end
+			draw:
+			begin
+				drawStart = 1;
+				eraseStart = 0;
+			end
+			done:
+			begin
+				drawStart = 0;
+				eraseStart = 0;
+			end
+	end
+	
+	always @ (*)
+	begin
+		if (drawStart == 1)
+		begin
+			x = /*Starting Coordinate*/ + drawCount[6:0];
+			y = /*Starting Coordinate*/ + drawCount[12:7];
+			colour = /*Whatever is in the memory*/
+			plot = 1;
+		end
+		else if (eraseStart == 1)
+		begin
+			x = /*Starting Coordinate*/ + drawCount[6:0];
+			y = /*Starting Coordinate*/ + drawCount[12:7];
+			colour = 3'b111;
+			plot = 1;
+		end
+		else
+			plot = 1;
+	end
+	
+	drawOverCounter myDraw(drawStart, clock, drawCount);
+	eraseOverCounter myErawe(eraseStart, clock, eraseCount);
+endmodule
+
+
+/***Draw Counter***/
+module drawOverCounter(trigger, clock, counting);
+	input trigger;
+	input clock;
+	output reg [12:0]counting;
+	
+	always @ (posedge clock)
+	begin
+		if (trigger == 1)
+			counting <= counting + 1'b1;
+		else
+			counting <= 13'b0;
+	end
+endmodule
+
+/***Erase Counter***/
+module eraseOverCounter(trigger, clock, counting);
+	input trigger;
+	input clock;
+	output reg [12:0]counting;
+	
+	always @ (posedge clock)
+	begin
+		if (trigger == 1)
+			counting <= counting + 1'b1;
+		else
+			counting <= 13'b0;
+	end
+endmodule
+
+
+
+
+
+
+
+
+
+
+

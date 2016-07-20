@@ -1,0 +1,569 @@
+`include "animation_for_the_fly.v"
+`include "fly_animation_up.v"
+`include "fly_animation_down.v"
+module Milestone1 (SW, KEY, CLOCK_50, LEDR, HEX3, HEX2, HEX1, HEX0, x, y, colour, plot); 
+/*
+* Will use SW[9] as the reset
+* SW[8] will trigger the game to start
+* LEDR[3:0] to represent the "mole"
+* SW[3:0] to be the corresponding key
+* HEX display the time remaining and score you get
+*/
+	input [9:0]SW;
+	input [3:0]KEY;
+	input CLOCK_50;
+	output [9:0]LEDR;
+	output [6:0]HEX3;
+	output [6:0]HEX2;
+	output [6:0]HEX1;
+	output [6:0]HEX0;
+	
+	wire gameOver;
+	gameTime GameCountDown(CLOCK_50, SW[9], gameOver, HEX3, HEX2);
+	wire delaySignal;
+	wire generated;
+	wire hit;
+	wire [3:0]currentstate;
+	
+	wire inOver, upOver, downOver;
+	output [8:0]x;
+	output [7:0]y;
+	output [2:0]colour;
+	output plot;
+	
+	//ControlPath
+	controlPath myControl(SW[9], CLOCK_50, generated, hit, delaySignal, gameOver, currentstate[3:0], inOver, upOver, downOver);
+	
+	wire startpage, randomLocation, displayLED, scoreupdate, holdtime;
+	
+	//datapath
+	datapath mydatapath(KEY[3:0], SW[9], CLOCK_50, currentstate[3:0], delaySignal, generated, hit, LEDR[9:0], HEX1[6:0], HEX0[6:0], x, y, colour, plot, inOver, upOver, downOver);
+	
+	
+
+
+
+endmodule
+
+
+/*
+* This part controls the score accumulation
+* Everytime a signal is on(indicating the item has been hit) the score goes up by one.
+* clock is CLOCK_50
+* reset is the reset of the game
+* hit is the signal being generated when the target has been hit
+*/
+
+module scoreCounter(clock, hit, reset, HEX1, HEX0);
+  //input CLOCK_50;
+	input clock;
+  input hit;
+  input reset;
+  output [6:0]HEX1;
+  output [6:0]HEX0;
+  reg [7:0]counter;
+  
+  
+  always @ (posedge clock)
+  begin
+  
+   if (reset == 1)
+		counter <= 8'b00000000;
+ 
+   else if (counter[3:0] == 4'b1001)
+	begin
+		counter[3:0] <= 4'b0000;
+		counter[7:4] <= counter[7:4] + 4'b0001;
+   end
+	else if(hit == 1)
+		counter <= counter + 1'b1;
+   
+  end
+  
+ 
+  
+  
+  //Display the score on the board
+  hex_display scoreTenth(counter[7:4], HEX1);
+  hex_display score1s(counter[3:0], HEX0);
+endmodule
+
+
+module datapath(KEY, reset, clock, currentstate, delaySignal, generated, hit, LEDR,  HEXone, HEXzero, x, y, colour, plot, inOver, upOver, downOver);
+	input [3:0]KEY;
+	input reset;
+	input clock;
+	
+	input[3:0]currentstate;
+	
+	output reg [9:0]LEDR;
+	output [6:0]HEXone;
+	output [6:0]HEXzero;
+	
+
+	output reg delaySignal;
+	output reg generated;
+	output reg hit;
+	
+	wire [7:0]randomNum;
+	parameter start = 4'b0000, generation = 4'b0001,show = 4'b0011, hold = 4'b0100, delay = 4'b0111, over = 4'b1000, reset_s=4'b1001;
+	//Continuously generating a random number
+	reg randomLocation;
+	
+	
+	
+	wire signal;
+	reg resetn;
+	reg beinghit;
+	scoreCounter myScore(clock, beinghit, reset, HEXone, HEXzero);
+	
+	
+	
+	
+	randomLocation RL(clock, randomLocation, reset, location[1:0]);
+	wire [1:0]location;
+	always @ (*)
+	begin
+		//Start state
+		case(currentstate[3:0])
+		reset_s:begin
+			LEDR[9:0]=10'b0000000000;
+		end
+		start:begin
+			beinghit = 0;
+			hit=0;
+			plot = 0;
+			randomLocation=1;
+		end
+		
+		//Generate a random location
+		generation:
+		begin
+			randomLocation=0;
+			delaySignal=0;
+			generated = 1;
+		end
+		
+		//Display the location onto the LED
+		show:
+		begin
+			x = x1;
+			y = y1;
+			colour = colour1;
+			plot = writeEn1;
+			generated = 0;
+			case(location[1:0])
+				2'b00: LEDR[0] = 1;
+				2'b01: LEDR[1] = 1;
+				2'b10: LEDR[2] = 1;
+				2'b11: LEDR[3] = 1;
+			endcase
+		end
+		
+		//Hold the display for sometime
+		hold:
+		begin
+			//While in the state of holding the fly is being hit, the switch off the light
+			case (location[1:0])
+				2'b00: 
+				begin
+					if (KEY[0] == 0)
+					begin
+						LEDR[0] = 0;
+						hit=1;
+						beinghit = 1;
+					end
+				end
+				2'b01: 
+				begin
+					if (KEY[1] == 0)
+					begin
+						LEDR[1] = 0;
+						hit=1;
+						beinghit = 1;
+					end
+				end
+				2'b10:
+				begin
+					if (KEY[2] == 0)
+					begin
+						LEDR[2] = 0;
+						hit=1;
+						beinghit = 1;
+					end
+				end
+				2'b11: 
+				begin
+					if (KEY[3] == 0)
+					begin
+						LEDR[3] = 0;
+						hit=1;
+						beinghit = 1;
+					end
+				end
+			endcase
+		end
+		
+		//Delay the program for 1 second for later operation
+		delay:
+		begin
+			beinghit = 0;
+			if(hit == 0)begin
+				x = x2;
+				y = y2;
+				colour = colour2;
+				plot = writeEn2;
+			end
+			else if(hit == 1)begin
+				x = x3;
+				y = y3;
+				colour = colour3;
+				plot = writeEn3;
+				LEDR[3:0] = 4'b0000;
+			end
+		end
+	endcase
+	end
+	
+	wire [8:0]x1;
+	wire [8:0]x2;
+	wire [8:0]x3;
+	
+	wire [7:0]y1;
+	wire [7:0]y2;
+	wire [7:0]y3;
+	
+	wire [2:0]colour1;
+	wire [2:0]colour2;
+	wire [2:0]colour3;
+	
+	wire writeEn1;
+	wire writeEn2;
+	wire writeEn3;
+	
+	output inOver, upOver, downOver;
+	
+	animationPath myAnimation(clock, currentstate, location, hit, x1, y1, x2, y2, x3, y3, colour1, colour2, colour3, writeEn1, writeEn2, writeEn3, inOver, upOver, downOver);
+
+	output reg [8:0]x;
+	output reg [7:0]y;
+	output reg [2:0]colour;
+	output reg plot;
+	
+	//Choice of the correct output in the corresponding case
+	/*always @ (*)
+	begin
+		case(currentstate)
+			show:
+			begin
+				x = x1;
+				y = y1;
+				colour = colour1;
+				plot = writeEn1;
+			end
+			delay:
+			begin
+				if (hit)
+				begin
+					x = x3;
+					y = y3;
+					colour = colour3;
+					plot = writeEn3;
+				end
+				else
+				begin
+					x = x2;
+					y = y2;
+					colour = colour2;
+					plot = writeEn2;
+				end
+			end
+			default:
+			begin
+				x = 9'b0;
+				y = 8'b0;
+				colour = 3'b0;
+				plot = 0;
+			end
+		endcase
+	end
+	*/
+endmodule
+
+/*
+* Animation module that acts a sub-module parented by the datapath
+* 
+*/
+
+module animationPath(clock, currentstate, location, hit, x1, y1, x2, y2, x3, y3, colour1, colour2, colour3, writeEn1, writeEn2, writeEn3, inOver, upOver, downOver);
+	input clock;
+	input [3:0]currentstate;
+	input [1:0]location;
+	input hit;
+	
+	output [8:0]x1;
+	output [7:0]y1;
+	output [8:0]x2;
+	output [7:0]y2;
+	output [8:0]x3;
+	output [7:0]y3;
+	output [2:0]colour1;
+	output [2:0]colour2;
+	output [2:0]colour3;
+	output writeEn1;
+	output writeEn2;
+	output writeEn3;
+	
+	output inOver;
+	output upOver;
+	output downOver;
+	
+	reg inStart, upStart, downStart;
+	always @ (*)
+	begin
+		case(currentstate)
+			4'b0011://In the show state
+			begin	
+				inStart = 1;
+				upStart = 0;
+				downStart = 0;
+			end
+			4'b0111://In the hold state
+			begin
+				if (hit == 1)//Go down
+					downStart = 1;
+				else
+					upStart = 1;
+			end
+			default:
+			begin
+				inStart = 0;
+				upStart = 0;
+				downStart = 0;
+			end
+		endcase
+	end
+	
+	//Stamping each module for the animation
+	flyIn myIn(inStart, location, clock, x1, y1, colour1, writeEn1, inOver);
+	fly_animation_up myUp(upStart, location, clock, x2, y2, colour2, writeEn2, upOver);
+	fly_animation_down myDown(downStart, location, clock, x3, y3, colour3, writeEn3, downOver);
+	
+endmodule
+
+
+module controlPath(reset, clock, generated, hit, delaySignal, timer, presentstate, inOver, upOver, downOver);
+	input reset, clock, generated, delaySignal, timer, hit, inOver, upOver, downOver;
+	output reg [3:0]presentstate;
+parameter start = 4'b0000, generation = 4'b0001,show = 4'b0011, hold = 4'b0100, delay = 4'b0111, over = 4'b1000, reset_s=4'b1001;
+	reg [3:0]nextstate;
+	wire signal;
+	wire signal1;
+	reg continue;
+	reg resetn;
+	reg resetn1;
+	//always@(negedge reset)
+	//begin
+		//if(reset==0)
+		//	continue=1;
+		//else	
+			//continue=0;
+//end 
+	oneSecond myOneSecond(clock, resetn, signal);
+	oneSecond myOneSecond1(clock, resetn1, signal1);
+	//State transformation
+	always @ (*)
+	begin
+		//The beginning of the game
+		case(presentstate)
+		reset_s:
+			//if(continue)
+				nextstate = start;
+		//The beginning of the game
+		start:
+				nextstate = generation;
+		
+		//Generate the place where the fly appears
+		generation:
+			if(generated)
+				nextstate = show;
+		
+		//Start the animation of showing up the fly
+		show:begin
+			resetn=1;
+			resetn1=1;
+			if (inOver == 1) 
+				nextstate = hold;
+		end
+		//Let the image hold for a few moments	
+		hold:
+		begin
+			resetn=0;
+			if (hit == 1)
+				nextstate = delay;
+			else if(signal==1)
+				nextstate = delay;
+		end
+		
+		
+		//Hold it for a while before appearing the next appearance of the next fly
+		delay:
+		begin
+			resetn1=0;
+			if(upOver || downOver)
+				nextstate = start;
+		end
+		
+		default:
+			nextstate = reset_s;
+	
+		endcase
+	end
+	
+	//The state flip flop
+	always @ (posedge clock)
+	begin //State flip-flops
+		if (timer == 1)//Running out of time
+			presentstate[3:0] = over;
+		else if(reset==1)
+			presentstate[3:0] = reset_s;
+		else
+			presentstate[3:0] = nextstate;
+	end
+	
+	
+endmodule
+
+/*
+* Module for generating random numbers
+* clock is supposed to be the clock with 50M Hz
+* When reset is triggered, start a new cycle
+* The output randomEightBits is a random 8-bit binary number
+* Note: the final output array may be longer than just size 8
+* This is only a prototype. Use modelsim to test its functionality
+*/
+
+
+module randomLocation(input clock, input enable, input reset, output reg[1:0]location);
+	reg [7:0]randomEightBitsBits;
+	always @ (posedge clock) 
+	begin
+		if (reset == 1)
+			randomEightBitsBits <= 8'b1;
+		else if (enable) //Starts a basic left shift with small features added
+		begin
+			randomEightBitsBits[7] <= randomEightBitsBits[6];
+			randomEightBitsBits[6] <= randomEightBitsBits[4] ^ randomEightBitsBits[2];
+			randomEightBitsBits[5] <= randomEightBitsBits[4];
+			randomEightBitsBits[4] <= randomEightBitsBits[3] ^ randomEightBitsBits[1];
+			randomEightBitsBits[3] <= randomEightBitsBits[2];
+			randomEightBitsBits[2] <= randomEightBitsBits[1];
+			randomEightBitsBits[1] <= randomEightBitsBits[0];
+			randomEightBitsBits[0] <= randomEightBitsBits[7] ^ randomEightBitsBits[6];
+		end
+	end
+	always@(posedge clock)
+		if(enable==1)
+			location[1:0]=randomEightBitsBits[3:2];
+endmodule
+
+/*
+* Counter counting 1 second
+* clock is supposed to be the clock with 50M Hz
+* When reset is triggered, start a new cycle
+* Signal will be set to one every second
+*/
+module oneSecond(input clock, input reset, output reg signal);
+	//The counter that counts
+	reg [25:0]counter;
+	always @ (posedge clock)
+	begin
+		if (reset || counter == 26'd50000000)
+			counter <= 26'b0;
+		else
+			counter <= counter + 1;
+	end
+	//When the counter hits 50M set the signal to 1. All the other senario, signal 0!
+	always @ (*)
+	begin
+		signal = (counter == 26'd50000000) ? 1:0;
+	end
+endmodule
+
+/*
+* The timer that counts if the game is over.
+* It counts down from 45 seconds
+* When the time is up, it will have the signal gameOver changing from 0 to 1
+* clock is supposed to be CLOCK_50
+* reset it the first initialization of the program
+*/
+module gameTime(clock, reset, gameOver, HEXtwo, HEXone);
+	input clock, reset;
+	output reg gameOver;
+	output [6:0]HEXtwo;
+	output [6:0]HEXone;
+	wire enable;
+	oneSecond gameCounter(clock, reset, enable);
+	
+	//Counting down from 45 second
+	reg [7:0]countDown;
+	always @ (posedge clock)
+	begin
+		
+		if (countDown[3:0]==4'b1111)
+			countDown[3:0] <=4'b1001;
+		if (reset == 1)
+			countDown <= 8'b01000101;
+		else if (countDown[7:0] == 8'b00000000)
+			countDown <= 8'b00000000;
+		else if (enable)
+			countDown <= countDown - 1'b1;
+		
+	end
+	
+	
+	//Display the time onto the HEX display
+
+	
+	hex_display tenth(countDown[7:4], HEXtwo);
+	hex_display oneth(countDown[3:0], HEXone);
+	
+	//Give the gameOver signal
+	always @ (*)
+	begin
+		if (countDown == 8'b00000000)
+			gameOver = 1;
+		else
+			gameOver = 0;
+	end
+	
+endmodule
+
+module hex_display(input [3:0]signal, output [6:0]display); // Get the 4-bit signal and output 7 signal used as hex display
+  wire [15:0]W;
+  //Below are all the minterm
+  assign W[0] = ~signal[3] & ~signal[2] & ~signal[1] & ~signal[0];
+  assign W[1] = ~signal[3] & ~signal[2] & ~signal[1] & signal[0];
+  assign W[2] = ~signal[3] & ~signal[2] & signal[1] & ~signal[0];
+  assign W[3] = ~signal[3] & ~signal[2] & signal[1] & signal[0];
+  assign W[4] = ~signal[3] & signal[2] & ~signal[1] & ~signal[0];
+  assign W[5] = ~signal[3] & signal[2] & ~signal[1] & signal[0];
+  assign W[6] = ~signal[3] & signal[2] & signal[1] & ~signal[0];
+  assign W[7] = ~signal[3] & signal[2] & signal[1] & signal[0];
+  assign W[8] = signal[3] & ~signal[2] & ~signal[1] & ~signal[0];
+  assign W[9] = signal[3] & ~signal[2] & ~signal[1] & signal[0];
+  assign W[10] = signal[3] & ~signal[2] & signal[1] & ~signal[0];
+  assign W[11] = signal[3] & ~signal[2] & signal[1] & signal[0];
+  assign W[12] = signal[3] & signal[2] & ~signal[1] & ~signal[0];
+  assign W[13] = signal[3] & signal[2] & ~signal[1] & signal[0];
+  assign W[14] = signal[3] & signal[2] & signal[1] & ~signal[0];
+  assign W[15] = signal[3] & signal[2] & signal[1] & signal[0];
+  //For each output assign the corresponding minterm
+  assign display[0] = W[1] | W[4] | W[11] | W[13];
+  assign display[1] = W[5] | W[6] | W[11] | W[12] | W[14] | W[15];
+  assign display[2] = W[2] | W[12] | W[14] | W[15];
+  assign display[3] = W[1] | W[4] | W[7] | W[10] | W[15];
+  assign display[4] = W[1] | W[3] | W[4] | W[5] | W[7] | W[9];
+  assign display[5] = W[1] | W[2] | W[3] | W[7] | W[13];
+  assign display[6] = W[0] | W[1] | W[7] | W[12];
+endmodule

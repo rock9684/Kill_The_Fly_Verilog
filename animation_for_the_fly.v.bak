@@ -1,0 +1,347 @@
+
+/*
+* Given an address give the designated x and y along the along the path
+* Making the assumption that the fly is a 4x4 black square
+* Takes in a value to start
+* It takes in a 2-bit address
+* clock is the CLOCK_50 clock
+* Give out the x, y coordinates and the plot signal
+* And it should be returning a signal to tell that the process has finished
+*/
+module flyIn(start, address, clock, x, y, colour, plot, over);
+	input start;
+	input [1:0]address;
+	input clock;
+	output [8:0]x; // Haven't specify the size of it yet
+	output [7:0]y;
+	output [2:0]colour;
+	output plot;
+	output over;
+
+	wire [3:0]plotcounter;
+	wire [25:0]delaycounter;
+	wire valid;
+	wire [3:0]currentstate;
+	controlFlyIn flyInControl(start, address, plotcounter, delaycounter, valid, currentstate);
+	dataFlyIn flyInControl(currentstate, clock, x, y, colour, plot, over, counter, delaycounter);
+	
+endmodule
+
+/*
+* The control path for a single animation
+* start is the signal to trigger the animation
+* address is the target fruit the fly will be landed on
+* plotcounter is for drawing and erasing the "fly"
+* delaycounter hold the image for a while
+* currentstate is the signal to datapath
+* validness is for checking whether the fly has reached the destination
+*/
+
+module controlFlyIn(start, address, plotcounter, delaycounter, validness, currentstate);
+
+	input start;
+	input address;
+	input [3:0]plotcounter;
+	input [25:0]delaycounter;
+	input validness
+	output reg [3:0]currentstate;
+	
+parameter [3:0] starting = 4'b0000, draw = 4'b0001, hold = 4'b0010, erase = 4'b0011, update = 4'b0100, checkvalid = 4'b0101, terminate = 4'b0110;
+
+	reg [3:0]nextstate;
+	//State update always block
+	always @ (*)
+	begin
+		//starting
+		if (currentstate == starting)
+			nextstate = draw;
+		
+		//draw
+		if (currentstate == draw)
+		begin
+			if (plotcounter == 4'd15)
+				nextstate = hold;
+			else
+				nextstate = draw;
+		end
+		
+		//hold
+		if (currentstate == hold)
+		begin
+			//Hold for a short period of time
+			//Making the travelling time from the leftmost to the rightmost roughly 0.5 seconds 
+			if (delaycounter == 26'd2500) 
+				nextstate = erase;
+			else 
+				nextstate = hold;
+		end
+		
+		//erase
+		if (currentstate == erase)
+		begin
+			if (plotcounter == 4'd15)
+				nextstate = update;
+			else
+				nextstate = erase;
+		end
+		
+		//update
+		if (currentstate == update)
+		begin
+			nextstate = checkvalid;
+		end
+		
+		//checkvalid
+		if (currentstate == checkvalid)
+		begin
+			if (validness)
+				nextstate = terminate;
+			else
+				nextstate = draw;
+		end
+		
+		//terminate
+		if (currentstate == terminate)
+			//Deliberately left empty
+			//Doesn't need to do anything in this state
+	
+	end
+	
+	//State Flip-Flop
+	always @ (posedge clock)
+	begin
+		if (start == 1)
+			currentstate <= starting;
+		else 
+			currentstate <= nextstate;
+	end
+	
+endmodule
+
+/*
+* The data path for a single animation
+* currentstate is the passed in through the control path
+* clock is the CLOCK_50
+* x is the x-coordinate to be drawn onto the VGA
+* y is the y-coordinate to be drawn onto the VGA
+* plot is the signal depicting whether it shall be drawn
+*/
+module dataFlyIn(currentstate, clock, x, y, colour, plot, over, counter, delaycounter);
+	input [3:0]currentstate;
+	output reg [8:0]x;
+	output reg [7:0]y;
+	output reg [2:0]colour;
+	output reg plot;
+	output reg over;
+parameter [3:0] starting = 4'b0000, draw = 4'b0001, hold = 4'b0010, erase = 4'b0011, update = 4'b0100, checkvalid = 4'b0101, terminate = 4'b0110;
+
+	//Wires representing each state behaviour
+	reg a, b, c, d, e, f, g;
+	always @ (*)
+	begin
+		case(currentstate)
+			starting: 
+			begin
+				a = 1;
+				b = 0;
+				c = 0;
+				d = 0;
+				e = 0;
+				f = 0;
+				g = 0;
+			end
+			
+			draw: 
+			begin
+				a = 0;
+				b = 1;
+				c = 0;
+				d = 0;
+				e = 0;
+				f = 0;
+				g = 0;
+			end
+			
+			hold: 
+			begin
+				a = 0;
+				b = 0;
+				c = 1;
+				d = 0;
+				e = 0;
+				f = 0;
+				g = 0;
+			end
+			
+			erase: 
+			begin
+				a = 0;
+				b = 0;
+				c = 0;
+				d = 1;
+				e = 0;
+				f = 0;
+				g = 0;
+			end
+			
+			update: 
+			begin
+				a = 0;
+				b = 0;
+				c = 0;
+				d = 0;
+				e = 1;
+				f = 0;
+				g = 0;
+			end
+			
+			checkvalid: 
+			begin
+				a = 0;
+				b = 0;
+				c = 0;
+				d = 0;
+				e = 0;
+				f = 1;
+				g = 0;
+			end
+			
+			terminate: //Though this state is kinda trivial 
+			begin
+				a = 1;
+				b = 0;
+				c = 0;
+				d = 0;
+				e = 0;
+				f = 0;
+				g = 1;
+			end
+		endcase
+	end
+	
+	//Need two counter for the process
+	output reg [3:0]counter;
+	output reg [25:0]delaycounter;
+	basiccounter myBasicCounter(clock, b | d, counter);
+	delayCNT myDelayCNT(clock, c, delaycounter);
+	
+	//Draw
+	always @ (*)
+	begin
+		if (b == 1)
+		begin
+			x = x + counter[1:0];
+			y = y + counter[3:2];
+			colour[2:0] = 3'b000;
+			plot = 1;
+		end
+		else
+			plot = 0;
+	end
+	
+	//hold
+	always @ (*)
+	begin
+		if (c == 1)
+		
+	end
+	
+	//Erase
+	always @ (*)
+	begin
+		if (d == 1)
+		begin
+			//This is definite error. Reset color need to be based on the blackground
+			x = x + counter[1:0];
+			y = y + counter[3:2];
+			colour[2:0] = 3'b111;
+			plot = 1;
+		end
+		else
+			plot = 0;
+			
+	end
+	
+	//Update
+	always @ (*)
+	begin
+		if (e == 1)
+		begin
+			//Is the coordinate really this?
+			//Don't forget what is the last operation after erase
+			x = x + 1;
+			y = y;
+		end
+		else
+	end
+	
+	//Check Validness
+	always @ (*)
+	begin
+		if (e == 1)
+		begin
+			case(address)
+				2'b00: 
+					if (x == a_address)
+						over = 1;
+				2'b01:
+					if (x == b_address)
+						over = 1;
+				2'b10:
+					if (x == c_address)
+						over = 1;
+				2'b11:
+					if (x == d_address)
+						over = 1;
+			endcase
+		end
+		else
+	end
+	
+	//Terminate
+	//Nothing to do here
+	
+endmodule
+
+/*
+* The basic counter for counting plotting and un-plotting
+* clock is the CLOCK_50
+* reset is the signal that triggered the counter to start
+* counter counts all the way until 15
+*/
+module basiccounter(clock, start, counter);
+	input clock;
+	input start;
+	output reg [3:0]counter;
+	
+	always @ (posedge clock)
+	begin
+		if (start == 1)
+			counter <= counter + 1'b1;
+		else
+			counter <= 4'b0000;
+	end
+endmodule
+
+/*
+* The basic counter for counting plotting and un-plotting
+* clock is the CLOCK_50
+* reset is the signal that triggered the counter to start
+* counter counts all the way till 2500 in decimal
+*/
+module delayCNT(clock, start, delaycount);
+	input clock;
+	input start;
+	output reg [25:0]delaycount;
+	
+	always @ (*)
+	begin
+		if (start == 1)
+			delaycount <= delaycount + 1'b1;
+		else
+			delaycount <= 26'b0;
+	end
+endmodule
+
+
+
